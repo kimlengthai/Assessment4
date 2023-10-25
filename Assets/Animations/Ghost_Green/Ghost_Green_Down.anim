@@ -29,7 +29,7 @@ AnimationClip:
     - time: 0.5
       value: {fileID: 1357411679, guid: 1cbf68979af0a0d458556c66dcffd668, type: 3}
     attribute: m_Sprite
-    path: Four Ghosts in normal state (Green)_0
+    path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -41,7 +41,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3443566562
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
