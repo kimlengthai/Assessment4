@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c41ac819b7a578847b34631bcf6a4743
+guid: 341a644d6f2f8e344b16896c68f2955c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PacStudent life indicator_0
+      name: PacStudent life indicator 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15fe401711e6133429ca081c24e515c6
-      internalID: -946586252
+      spriteID: 0bc0e14b07f420d48bf33b09025eacd2
+      internalID: -1244051976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent life indicator_1
+      name: PacStudent life indicator 1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -142,8 +142,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd474338b0214604883cd04983d11f59
-      internalID: 274366882
+      spriteID: 51f2109f376fd074096d1f30839cce46
+      internalID: -644127014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PacStudent life indicator 1_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd9bdab28da25044816bc2e1153a879
+      internalID: -824988441
       vertices: []
       indices: 
       edges: []
@@ -151,7 +172,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 89e0734354a00a24ea6520eac1c1e636
+    spriteID: b4e10a8cb9d0e394fbd34bd5904fc3ea
     internalID: 0
     vertices: []
     indices: 
@@ -159,8 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PacStudent life indicator_0: -946586252
-      PacStudent life indicator_1: 274366882
+      PacStudent life indicator 1_0: -1244051976
+      PacStudent life indicator 1_1: -644127014
+      PacStudent life indicator 1_2: -824988441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
