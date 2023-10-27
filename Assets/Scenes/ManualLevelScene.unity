@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12438,6 +12438,7 @@ GameObject:
   - component: {fileID: 812691150}
   - component: {fileID: 812691153}
   - component: {fileID: 812691154}
+  - component: {fileID: 812691155}
   m_Layer: 0
   m_Name: PacStudent
   m_TagString: Untagged
@@ -12545,7 +12546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 812691149}
-  animatorController: {fileID: 812691150}
+  animatorController: {fileID: 0}
 --- !u!114 &812691154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12558,6 +12559,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c3d1f758f95a48a10a6a190eddacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &812691155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812691149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3663ee190958de4fbac198aaecec8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 812691149}
+  animatorController: {fileID: 812691150}
 --- !u!1001 &814829824
 PrefabInstance:
   m_ObjectHideFlags: 0
