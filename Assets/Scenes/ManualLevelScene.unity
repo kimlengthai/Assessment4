@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12571,8 +12571,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3663ee190958de4fbac198aaecec8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 812691149}
-  animatorController: {fileID: 812691150}
+  speed: 3
+  speedMultiplier: 1
+  initialDirection: {x: 0, y: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &814829824
 PrefabInstance:
   m_ObjectHideFlags: 0
