@@ -186,6 +186,7 @@ public class PacStudentController : MonoBehaviour
         }
     }
 
+    //Allow the PacStudent to move in any direction we pressed.
     private void FixedUpdate()
     {
         Vector2 translation = direction * speed * speedMultiplier * Time.fixedDeltaTime;
