@@ -140,20 +140,23 @@ public class PacStudentController : MonoBehaviour
 {
     public float speed = 3f;
     public float speedMultiplier = 1f;
-    public Vector2 initialDirection;
+    public Vector2 initialDir;
+    public AudioSource footStepSource;
+    public AudioClip[] footStepClips;
+    private int currentClip = 0;
 
     int switchingHead;
     [SerializeField] private Animator animatorController;
 
     private Vector2 direction;
-    private Vector2 nextDirection;
-    private Vector3 startingPosition;
+    private Vector2 nextDir;
+    private Vector3 startingPos;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        startingPosition = transform.position;
+        startingPos = transform.position;
     }
 
     private void Start()
@@ -164,26 +167,22 @@ public class PacStudentController : MonoBehaviour
     public void ResetState()
     {
         speedMultiplier = 1f;
-        direction = initialDirection;
-        nextDirection = Vector2.zero;
-        transform.position = startingPosition;
+        direction = initialDir;
+        nextDir = Vector2.zero;
+        transform.position = startingPos;
         spriteRenderer.enabled = true;
         enabled = true;
     }
 
     private void Update()
     {
-        // Handle input for movement
-        HandleInput();
+        // Handle input movement for PacStudentMovement
+        HandleInputMovement();
 
-/*        // Rotate pacman to face the movement direction
-        float angle = Mathf.Atan2(direction.y, direction.x);
-        transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);*/
-
-        // Try to move in the next direction while it's queued to make movements more responsive
-        if (nextDirection != Vector2.zero)
+        // Trying to move in the next direction while it's queued to make movements more responsive
+        if (nextDir != Vector2.zero)
         {
-            SetDirection(nextDirection);
+            SetDirection(nextDir);
         }
     }
 
@@ -193,42 +192,59 @@ public class PacStudentController : MonoBehaviour
         Move(translation);
     }
 
-    private void HandleInput()
+    private void HandleInputMovement()
     {
-        // Handle input for movement
-        Vector2 inputDirection = Vector2.zero;
+        // Handle input movement for movement
+        Vector2 inputMovement = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
         {
             animatorController.SetTrigger("isFlipped");
-            inputDirection = Vector2.up;
+            inputMovement = Vector2.up;
             switchingHead = 0;
-            animatorController.SetInteger("switchingHead", switchingHead);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            animatorController.SetTrigger("isFlipped");
-            inputDirection = Vector2.down;
-            switchingHead = 2;
             animatorController.SetInteger("switchingHead", switchingHead);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             animatorController.SetTrigger("isFlipped");
-            inputDirection = Vector2.left;
+            inputMovement = Vector2.left;
             switchingHead = 1;
+            animatorController.SetInteger("switchingHead", switchingHead);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            animatorController.SetTrigger("isFlipped");
+            inputMovement = Vector2.down;
+            switchingHead = 2;
             animatorController.SetInteger("switchingHead", switchingHead);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             animatorController.SetTrigger("isFlipped");
-            inputDirection = Vector2.right;
+            inputMovement = Vector2.right;
             switchingHead = 3;
             animatorController.SetInteger("switchingHead", switchingHead);
         }
 
-        // Set the new direction based on input
-        SetDirection(inputDirection);
+        // Set the new direction based on input movement
+        SetDirection(inputMovement);
+        //add a foot step audio on PacStudent
+        FootstepAudio();
+    }
+
+    //add audio for PacStudent foot step
+    public void FootstepAudio()
+    {
+        if (!footStepSource.isPlaying)
+        {
+            currentClip = 1 - currentClip;
+            footStepSource.clip = footStepClips[currentClip];
+            footStepSource.Play();
+        }
+        else if (footStepSource.isPlaying)
+        {
+            footStepSource.Stop();
+        }
     }
 
     public void SetDirection(Vector2 direction, bool forced = false)
@@ -239,11 +255,11 @@ public class PacStudentController : MonoBehaviour
         if (forced || !Occupied(direction))
         {
             this.direction = direction;
-            nextDirection = Vector2.zero;
+            nextDir = Vector2.zero;
         }
         else
         {
-            nextDirection = direction;
+            nextDir = direction;
         }
     }
 
@@ -256,13 +272,13 @@ public class PacStudentController : MonoBehaviour
 
     private void Move(Vector2 translation)
     {
-        // Calculate the new position
-        Vector2 newPosition = (Vector2)transform.position + translation;
+        // Calculating the new position
+        Vector2 newPos = (Vector2)transform.position + translation;
 
         // Check for collisions before moving
         if (!Occupied(translation.normalized))
         {
-            transform.position = newPosition;
+            transform.position = newPos;
         }
     }
 }
