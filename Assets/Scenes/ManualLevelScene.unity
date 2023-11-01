@@ -12663,7 +12663,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812691149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 296c3d1f758f95a48a10a6a190eddacd, type: 3}
   m_Name: 
@@ -12680,14 +12680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3663ee190958de4fbac198aaecec8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  speedMultiplier: 1
-  initialDir: {x: 0, y: 0}
-  footStepSource: {fileID: 812691156}
-  footStepClips:
-  - {fileID: 8300000, guid: b8fa210b65529c84793a083613920b02, type: 3}
-  - {fileID: 8300000, guid: 676ac347b49c7824aa52689049ed4d34, type: 3}
-  animatorController: {fileID: 812691150}
+  isRepeatedMovement: 0
+  moveDuration: 0.1
+  gridSize: 1
 --- !u!82 &812691156
 AudioSource:
   m_ObjectHideFlags: 0

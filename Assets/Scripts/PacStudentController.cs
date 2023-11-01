@@ -138,7 +138,7 @@ using UnityEngine;
 
 public class PacStudentController : MonoBehaviour
 {
-    public float speed = 3f;
+   /* public float speed = 3f;
     public float speedMultiplier = 1f;
     public Vector2 initialDir;
     public AudioSource footStepSource;
@@ -287,6 +287,74 @@ public class PacStudentController : MonoBehaviour
         {
             transform.position = newPos;
         }
+    }*/
+
+    //Allows you to hold down a key for a movement
+    [SerializeField] private bool isRepeatedMovement = false;
+    //Time (s) it takes to move between one grid  and the next
+    [SerializeField] private float moveDuration = 0.1f;
+    //size of the grid
+    [SerializeField] private float gridSize = 1f;
+
+    private bool isMoving = false;
+
+    private void Update()
+    {
+        //Only process on move at a time
+        if (!isMoving)
+        {
+            //Accomodate two different types of moving
+            System.Func<KeyCode, bool> inputFunction;
+            if (isRepeatedMovement)
+            {
+                //GetKey repeatdly fires.
+                inputFunction = Input.GetKey;
+            }
+            else
+            {
+                //GetKeyDown fires once per keypress
+                inputFunction = Input.GetKeyDown;
+            }
+            if (inputFunction(KeyCode.W))
+            {
+                StartCoroutine(Move(Vector2.up));
+            }
+            else if (inputFunction(KeyCode.S))
+            {
+                StartCoroutine(Move(Vector2.down));
+            }
+            else if (inputFunction(KeyCode.A))
+            {
+                StartCoroutine(Move(Vector2.left));
+            }
+            else if (inputFunction(KeyCode.D))
+            {
+                StartCoroutine(Move(Vector2.right));
+            }
+        }
+    }
+    private IEnumerator Move(Vector2 direction)
+    {
+        //Record that we're moving so we don't accept more input
+        isMoving = true;
+        //currentPos and the next position we're going.
+        Vector2 startPos = transform.position;
+        Vector2 endPos = startPos + (direction * gridSize);
+
+        //Smoothly move in the desired direction taking the required time
+        float elapsedTime = 0;
+        while (elapsedTime < moveDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float percent = elapsedTime / moveDuration;
+            transform.position = Vector2.Lerp(startPos, endPos, percent);
+            yield return null;
+        }
+        //Ensure we end up in where we want.
+        transform.position = endPos;
+
+        //No long moving so we can accept another move input.
+        isMoving = false;
     }
 }
 
