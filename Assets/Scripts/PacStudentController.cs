@@ -136,12 +136,14 @@ using System.Collections.Specialized;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class PacmanMovement : MonoBehaviour
+public class PacStudentController : MonoBehaviour
 {
     public float speed = 3f;
     public float speedMultiplier = 1f;
     public Vector2 initialDirection;
-    public LayerMask obstacleLayer;
+
+    int switchingHead;
+    [SerializeField] private Animator animatorController;
 
     private Vector2 direction;
     private Vector2 nextDirection;
@@ -174,9 +176,9 @@ public class PacmanMovement : MonoBehaviour
         // Handle input for movement
         HandleInput();
 
-        // Rotate pacman to face the movement direction
+/*        // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(direction.y, direction.x);
-        transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);*/
 
         // Try to move in the next direction while it's queued to make movements more responsive
         if (nextDirection != Vector2.zero)
@@ -198,19 +200,31 @@ public class PacmanMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
+            animatorController.SetTrigger("isFlipped");
             inputDirection = Vector2.up;
+            switchingHead = 0;
+            animatorController.SetInteger("switchingHead", switchingHead);
         }
         else if (Input.GetKey(KeyCode.S))
         {
+            animatorController.SetTrigger("isFlipped");
             inputDirection = Vector2.down;
+            switchingHead = 2;
+            animatorController.SetInteger("switchingHead", switchingHead);
         }
         else if (Input.GetKey(KeyCode.A))
         {
+            animatorController.SetTrigger("isFlipped");
             inputDirection = Vector2.left;
+            switchingHead = 1;
+            animatorController.SetInteger("switchingHead", switchingHead);
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            animatorController.SetTrigger("isFlipped");
             inputDirection = Vector2.right;
+            switchingHead = 3;
+            animatorController.SetInteger("switchingHead", switchingHead);
         }
 
         // Set the new direction based on input
@@ -236,7 +250,7 @@ public class PacmanMovement : MonoBehaviour
     public bool Occupied(Vector2 direction)
     {
         // Use raycasting to check for obstacles
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f, obstacleLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f);
         return hit.collider != null;
     }
 
