@@ -268,7 +268,13 @@ public class PacStudentController : MonoBehaviour
     {
         // Use raycasting to check for obstacles
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f);
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+        {
+            return true;
+        }
         return hit.collider != null;
+      return false;
+
     }
 
     private void Move(Vector2 translation)
