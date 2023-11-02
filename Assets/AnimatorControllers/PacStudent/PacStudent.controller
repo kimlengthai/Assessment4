@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PacStudentWalkRight
-  m_Speed: 1
+  m_Speed: 9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5515056203669766021}
@@ -35,7 +35,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PacStudentWalkLeft
-  m_Speed: 1
+  m_Speed: 9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4252533866757060690}
@@ -87,7 +87,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PacStudent
-  m_Speed: 1
+  m_Speed: 9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7823481132967916799}
@@ -170,7 +170,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PacStudentWalkUp
-  m_Speed: 1
+  m_Speed: 9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -87584513267556513}
@@ -365,7 +365,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PacStudentWalkDown
-  m_Speed: 1
+  m_Speed: 9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3537135177128884094}
