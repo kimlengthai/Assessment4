@@ -21,6 +21,15 @@ public class PacStudentController : MonoBehaviour
 
     private bool isMoving = false;
 
+    public GameObject dustParticleEffect;
+    private ParticleSystem dustParticleSystem;
+
+    private void Start()
+    {
+        dustParticleSystem = dustParticleEffect.GetComponent<ParticleSystem>();
+        dustParticleSystem.Stop();
+    }
+
     private void Update()
     {
         //Only process on move at a time
@@ -105,6 +114,8 @@ public class PacStudentController : MonoBehaviour
 
         }
 
+        dustParticleSystem.Play();
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f);
         if (hit)
         {
@@ -133,6 +144,8 @@ public class PacStudentController : MonoBehaviour
         }
         //Ensure we end up in where we want.
         transform.position = endPos;
+
+        dustParticleSystem.Stop();
 
         //No long moving so we can accept another move input.
         isMoving = false;
