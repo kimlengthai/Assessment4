@@ -11,9 +11,9 @@ public class PacStudentController : MonoBehaviour
     //PacStudent animator
     [SerializeField] private Animator animatorController;
     //Allows you to hold down a key for a movement
-    [SerializeField] private bool isRepeatedMovement = false;
+    [SerializeField] private bool onLoopMovement = false;
     //Time (s) it takes to move between one grid and the next
-    [SerializeField] private float moveDuration = 1f;
+    [SerializeField] private float moveDuration = 0.2f;
     //size of the grid
     [SerializeField] private float gridSize = 1f;
     //store the last key that the player pressed
@@ -28,7 +28,7 @@ public class PacStudentController : MonoBehaviour
         {
             //Accomodate two different types of moving
             System.Func<KeyCode, bool> inputFunction;
-            if (isRepeatedMovement)
+            if (onLoopMovement)
             {
                 //GetKey repeatdly fires.
                 inputFunction = Input.GetKey;
@@ -108,7 +108,7 @@ public class PacStudentController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f);
         if (hit)
         {
-            Debug.Log("Test");
+            //Debug.Log("Test");
             Debug.Log(hit.collider.tag);
         }
             
@@ -138,6 +138,3 @@ public class PacStudentController : MonoBehaviour
         isMoving = false;
     }
 }
-
-//shouldnt saved lastInput
-//shoudlnt saved headDirection
