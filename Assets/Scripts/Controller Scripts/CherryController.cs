@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CherryController : MonoBehaviour
 {
-    public GameObject bonusScoreCherry;
-    public Transform levelCenter;
     public float moveSpeed = 5f;
     public float spawnInterval = 10f;
+    public GameObject bonusScoreCherry;
+    public Transform levelCenter;
 
     private Camera mainCamera;
     private Vector3 spawnPos;
@@ -16,25 +16,25 @@ public class CherryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    //    mainCamera = Camera.main;
-    //    StartCoroutine(SpawnCherry);
+        mainCamera = Camera.main;
+        StartCoroutine(SpawnBonusCherry());
     }
 
-    /*IEnumerator SpawnCherry()
+    IEnumerator SpawnBonusCherry()
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-            SpawnCherry();
+            SpawnBonusCherry();
         }
     }
 
-    void SpawnNewCherry()
+    void SpawnNewBonusCherry()
     {
-        float randomX = Random.Range(0f,1f) > 0.5f ? -1f : 1f;
-        float randomY = Random.Range(0f,1f) > 0.5f ? -1f : 1f;
+        float randomXPos = Random.Range(0f,1f) > 0.5f ? -1f : 1f;
+        float randomYPos = Random.Range(0f,1f) > 0.5f ? -1f : 1f;
 
-        spawnPos = new Vector3(randomX * mainCamera.orthographicSize * mainCamera.aspect * 2f, randomY * mainCamera.orthographicSize * 2f, 0f);
+        spawnPos = new Vector3(randomXPos * mainCamera.orthographicSize * mainCamera.aspect * 2f, randomYPos * mainCamera.orthographicSize * 2f, 0f);
 
         GameObject cherry = Instantiate(bonusScoreCherry, spawnPos, Quaternion.identity);
 
@@ -45,14 +45,14 @@ public class CherryController : MonoBehaviour
 
     IEnumerator MoveCherry(Transform cherryTransform)
     {
-        float journeyLength = Vector3.Distance(cherryTransform.position, destroyPos);
+        float travelLength = Vector3.Distance(cherryTransform.position, destroyPos);
         float startTime = Time.time;
 
         while (cherryTransform.position != destroyPos)
         {
             float distanceCovered = (Time.time - startTime) * moveSpeed;
-            float journeyFraction = distanceCovered / journeyLength;
-            cherryTransform.position = Vector3.Lerp(spawnPos, destroyPos, journeyFraction);
+            float travelFraction = distanceCovered / travelLength;
+            cherryTransform.position = Vector3.Lerp(spawnPos, destroyPos, travelFraction);
 
             yield return null;
         }
@@ -64,5 +64,5 @@ public class CherryController : MonoBehaviour
     void Update()
     {
         
-    } */
+    }
 }

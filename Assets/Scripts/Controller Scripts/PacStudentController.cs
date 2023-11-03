@@ -24,10 +24,39 @@ public class PacStudentController : MonoBehaviour
     public GameObject dustParticleEffect;
     private ParticleSystem dustParticleSystem;
 
+    /*    [SerializeField] private AudioClip audioSource;
+
+        [SerializeField] private AudioClip pacStudentMovementAudioClip;*/
+
     private void Start()
     {
         dustParticleSystem = dustParticleEffect.GetComponent<ParticleSystem>();
         dustParticleSystem.Stop();
+
+        /*        audioSource = GetComponent<audioSource>();
+                audioSource.clip = pacStudentMovementAudioClip;
+                audioSource.loop = true;
+                audioSource.Stop();*/
+
+        gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    //Detect pellet and destroy it when PacStudent walk past
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pellet"))
+        {
+            Destroy(other.gameObject);
+            PlayPelletEatingAudio();
+        }
+    }
+
+    void PlayPelletEatingAudio()
+    {
+        if (GetComponent<AudioSource>() != null)
+        {
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     private void Update()
@@ -58,7 +87,6 @@ public class PacStudentController : MonoBehaviour
             else if (inputFunction(KeyCode.A))
             {
                 animatorController.SetTrigger("isFlipped");
-             //   StartCoroutine(Move(Vector2.left));
                 switchingHead = 1;
                 animatorController.SetInteger("switchingHead", switchingHead);
                 lastInput = KeyCode.A;
@@ -66,7 +94,6 @@ public class PacStudentController : MonoBehaviour
             else if (inputFunction(KeyCode.S))
             {
                 animatorController.SetTrigger("isFlipped");
-             //   StartCoroutine(Move(Vector2.down));
                 switchingHead = 2;
                 animatorController.SetInteger("switchingHead", switchingHead);
                 lastInput = KeyCode.S;
@@ -74,7 +101,6 @@ public class PacStudentController : MonoBehaviour
             else if (inputFunction(KeyCode.D))
             {
                 animatorController.SetTrigger("isFlipped");
-            //    StartCoroutine(Move(Vector2.right));
                 switchingHead = 3;
                 animatorController.SetInteger("switchingHead", switchingHead);
                 lastInput = KeyCode.D;
@@ -84,6 +110,15 @@ public class PacStudentController : MonoBehaviour
             {
                 StartCoroutine(Move(lastInput));
             }
+
+            /*if (isMoving && !audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else if (!isMoving && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }*/
         }
     }
 
@@ -119,7 +154,6 @@ public class PacStudentController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.75f);
         if (hit)
         {
-            //Debug.Log("Test");
             Debug.Log(hit.collider.tag);
         }
             
