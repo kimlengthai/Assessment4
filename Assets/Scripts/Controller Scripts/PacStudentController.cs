@@ -42,14 +42,14 @@ public class PacStudentController : MonoBehaviour
     }
 
     //Detect pellet and destroy it when PacStudent walk past
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Pellet"))
-        {
-            Destroy(other.gameObject);
-            PlayPelletEatingAudio();
-        }
-    }
+    //  void OnTriggerEnter2D(Collider2D other)
+    //  {
+    //      if (other.CompareTag("Pellet"))
+    //      {
+    //          Destroy(other.gameObject);
+    //          PlayPelletEatingAudio();
+    //      }
+    //  }
 
     void PlayPelletEatingAudio()
     {
