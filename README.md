@@ -1,4 +1,5 @@
 # Pac-Student Recreation Game
+A classic game in the world of video games, Pac-Student
 # About the game
 Pac-Man is a classic arcade game that was first released in 1980 by Namco. You as a player control the Pac-Student, through a maze. The objective is to eat all the dots (pellets) in a maze while avoiding four colourful ghosts.
 # Pac-Student Recreation Game
